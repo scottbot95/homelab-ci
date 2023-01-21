@@ -13,8 +13,8 @@ params:
 run:
   path: sh
   args:
-  - -evc
+  - -exc
   - |
-    [ -z ((secret_file)) ] && [ -f ((secret_file)) ] || exit 0
+    [ ! -z source/((secret_file)) ] && [ -f source/((secret_file)) ] || exit 0
     sops --decrypt source/((secret_file)) > secrets/((secret_file))
     chmod 600 secrets/*

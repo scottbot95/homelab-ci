@@ -18,6 +18,8 @@ jobs:
   plan:
   - get: ci-utils
     trigger: true
+  - get: deployment-source
+    trigger: true
   - task: decrypt-common-secrets
     file: ci-utils/tasks/decrypt-sops.yaml
     input_mapping:
@@ -51,13 +53,13 @@ jobs:
     passed:
       - update-pipeline
     trigger: true
-  - task: decrypt-source-secrets
+  - task: decrypt-secrets
     file: ci-utils/tasks/decrypt-sops.yaml
     input_mapping:
-      source: deployment-source
+      source: ci-utils
     vars:
       age_key: ((age_key))
-      secret_file: ci-secrets.yaml
+      secret_file: proxmox.json
   - task: deploy
     file: ci-utils/tasks/run-nix.yaml
     privileged: true # It's probably theoretically possible to avoid this...
@@ -65,7 +67,7 @@ jobs:
       HERCULES_CI_API_TOKEN: ((hci_token))
     vars:
       ssh_key: ((worker_ssh_key))
-      command: nixops
+      command: echo # TODO put this back to nixops
       args: deploy
     input_mapping:
       source: deployment-source
