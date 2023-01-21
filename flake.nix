@@ -11,12 +11,16 @@
         nixpkgs,
         stateName ? "homelab.nixops",
         ...
-      }: 
+      }:
       let
+        hciConfig = {
+          inherit stateName;
+          project = "github/scottbot95/nixos-config";
+        };
         sharedConfig = {
           network = {
-            storage.hercules-ci = { inherit stateName; };
-            lock.hercules-ci = { inherit stateName; };
+            storage.hercules-ci = hciConfig;
+            lock.hercules-ci = hciConfig;
             enableRollback = true;
           };
 
@@ -27,7 +31,7 @@
           };
 
         };
-        extraArgs = builtins.removeAttrs [ "stateName" ] args;
+        extraArgs = builtins.removeAttrs args [ "stateName" ];
       in nixpkgs.lib.recursiveUpdate sharedConfig extraArgs;
     };
   };
