@@ -67,7 +67,7 @@ jobs:
       HERCULES_CI_API_TOKEN: ((hci_token))
     vars:
       ssh_key: ((worker_ssh_key))
-      command: echo # TODO put this back to nixops
+      command: nixops
       args: deploy
     input_mapping:
       source: deployment-source
