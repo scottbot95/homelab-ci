@@ -1,0 +1,71 @@
+resources:
+- name: ci-utils
+  type: git
+  icon: github
+  source:
+    uri: https://github.com/scottbot95/homelab-ci
+  webhook_token: ((gh_ci_webhook_token))
+- name: deployment-source
+  type: git
+  icon: github
+  source:
+    uri: https://github.com/((gh_repo))
+  webhook_token: ((gh_webhook_token))
+
+jobs:
+- name: update-pipeline
+  serial: true
+  plan:
+  - get: ci-utils
+    trigger: true
+  - task: decrypt-common-secrets
+    file: ci-utils/tasks/decrypt-sops.yaml
+    input_mapping:
+      source: ci-utils
+    output_mapping:
+      secrets: ci-secrets
+    vars:
+      age_key: ((age_key))
+      secret_file: secrets.yaml
+  - task: decrypt-source-secrets
+    file: ci-utils/tasks/decrypt-sops.yaml
+    input_mapping:
+      source: deployment-source
+    vars:
+      age_key: ((age_key))
+      secret_file: ci-secrets.yaml
+  - set_pipeline: self
+    file: ci-utils/nixops-pipeline.yaml
+    var_files:
+    - ci-secrets/secrets.yaml
+    - secrets/ci-secrets.yaml
+
+- name: deploy-network
+  serial: true
+  plan:
+  - get: ci-utils
+    passed:
+      - update-pipeline
+    trigger: true
+  - get: deployment-source
+    passed:
+      - update-pipeline
+    trigger: true
+  - task: decrypt-source-secrets
+    file: ci-utils/tasks/decrypt-sops.yaml
+    input_mapping:
+      source: deployment-source
+    vars:
+      age_key: ((age_key))
+      secret_file: ci-secrets.yaml
+  - task: deploy
+    file: ci-utils/tasks/run-nix.yaml
+    privileged: true # It's probably theoretically possible to avoid this...
+    params:
+      HERCULES_CI_API_TOKEN: ((hci_token))
+    vars:
+      ssh_key: ((worker_ssh_key))
+      command: nixops
+      args: deploy
+    input_mapping:
+      source: deployment-source

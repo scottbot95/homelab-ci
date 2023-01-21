@@ -1,0 +1,20 @@
+platform: linux
+image_resource:
+  type: registry-image
+  source:
+    repository: mozilla/sops
+    tag: alpine
+inputs:
+- name: source
+outputs:
+- name: secrets
+params:
+  SOPS_AGE_KEY: ((age_key))
+run:
+  path: sh
+  args:
+  - -evc
+  - |
+    [ -z ((secret_file)) ] && [ -f ((secret_file)) ] || exit 0
+    sops --decrypt source/((secret_file)) > secrets/((secret_file))
+    chmod 600 secrets/*
