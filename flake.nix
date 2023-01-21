@@ -9,15 +9,14 @@
     lib = {
       mkNetwork = args@{
         nixpkgs,
+        stateName ? "homelab.nixops",
         ...
       }: 
       let
         sharedConfig = {
-          inherit nixpkgs;
-
           network = {
-            storage.hercules-ci.stateName = "homelab.nixops";
-            lock.hercules-ci.stateName = "homelab.nixops";
+            storage.hercules-ci = { inherit stateName; };
+            lock.hercules-ci = { inherit stateName; };
             enableRollback = true;
           };
 
@@ -28,7 +27,7 @@
           };
 
         };
-        extraArgs = builtins.removeAttrs [ "description" ] args;
+        extraArgs = builtins.removeAttrs [ "stateName" ] args;
       in nixpkgs.lib.recursiveUpdate sharedConfig extraArgs;
     };
   };
