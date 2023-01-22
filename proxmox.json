@@ -1,9 +1,7 @@
 {
-	"credentials": {
-		"username": "ENC[AES256_GCM,data:Lq1ThDDSQWY=,iv:XXuY8BoPqKC4koF1cCAlNx0ct27txm6/XyhufNHoV5U=,tag:t6jumTCGAo3Edh5VaK5U2Q==,type:str]",
-		"tokenName": "ENC[AES256_GCM,data:ffwY8a/f,iv:g+PLvvsyAF1YAlG/vIZtIfv6GXntG0II+L0wMY5OpkE=,tag:0CnHFZCUamLPZ+Av8fyRQA==,type:str]",
-		"tokenValue": "ENC[AES256_GCM,data:uDDP5i2XalLQL9n9s/ps6NUtOgzM1XSHTmKuIffXISdBG5Fm,iv:EQeNllIlFWZUgD8NUm8bUh0Xb2RoILk1ERHFTX0cyjc=,tag:RwnNISPM1QCHlU9lrR3zJg==,type:str]"
-	},
+	"username": "ENC[AES256_GCM,data:edi1j5GdPHQ=,iv:RW4VvXQwo3WNZ+6Q4x8Bq1WKQ2x5S1MGqee9Yr+4Ig8=,tag:JnGuvnWVQWGcQxKTiXo8RQ==,type:str]",
+	"tokenName": "ENC[AES256_GCM,data:N5nDT+vU,iv:1Ah1c1/GjflMluYRUQu7LdJ4/eGPAypRdn3tmuwhvHM=,tag:CevxObw20ZkbYfBO3BribQ==,type:str]",
+	"tokenValue": "ENC[AES256_GCM,data:oHxSZKf5htWi7kFvL9cLTF1co2BkI2Tn5QRgCzOGmDdT/kHv,iv:vlPCU2AGDMHlZ889LjrnGi4TTM81TL87T5qH/VHLdRI=,tag:/5ZFHGNyIrWjQPnb6FIf8Q==,type:str]",
 	"sops": {
 		"kms": null,
 		"gcp_kms": null,
@@ -19,8 +17,8 @@
 				"enc": "-----BEGIN AGE ENCRYPTED FILE-----\nYWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA0bE5RVCtMcGpoK2RUNkNv\nck94aU5GNkxLbHhPY3hzbWxtNVdFZ0xxUDBnCjFXNm01MEhhOE5PY203NFhtbFdr\naFlTQmt6MysrZitDSEUzQVVBNlVsSHMKLS0tIFNGcEgzR0NjanYzeXhKclhQSE82\nQTZlZkl2eUw2Sy9CSWRSNTh2QzhRMVUKZ7spqwH/5xUXvWBZyza+R80fYsxfPUF0\nDjw7P/QuUV+TDjcXh2cC8SN4m0aRo24sldBzRP4sxoaLgE40dZwFnA==\n-----END AGE ENCRYPTED FILE-----\n"
 			}
 		],
-		"lastmodified": "2023-01-21T18:58:15Z",
-		"mac": "ENC[AES256_GCM,data:9ZI5Y3rM/CHuwBf4rNljuDzm628HYfsswtm7fVd3jBS9TDBW4/BBnxG9bCpD7xIz+IAcr+cUkeNKbf5HDp3NFfLSYB40FA0/WAUQPyMkFy4lU1r7qAA4WVA/KbiBaU5NlOJ/8scTprkzPmoICrSHZ9jhxlhem7+8f5aYDfvHh6Y=,iv:OgNXpBdPHqJvJeiUUFb0g7891jWO0bxB8vmUtdAX0K0=,tag:BTy5MXdruYlUgEiAYAjRrg==,type:str]",
+		"lastmodified": "2023-01-22T18:59:18Z",
+		"mac": "ENC[AES256_GCM,data:ezlXV9adx5Njjr/wAwwVGUvaFsYGx13+Sb3kGOVNFeSWtqFXetSGseXJNX+75q9gpmThCIoz5uUtlf9WUCif1pF7vvNJ7Wts2HRVek67MmBBjy30Swg206mg87WARkvGzmJvUAIsMUOWYjgKQp9oTOERD8kQzfOA7lRD8uJk9Ms=,iv:flAXTYVuvPEjU7mJgn7WMMfSKTwlnPnV87hCLhPL5F4=,tag:MRkssXEIUDBA+MfPZ1TUuw==,type:str]",
 		"pgp": null,
 		"unencrypted_suffix": "_unencrypted",
 		"version": "3.7.3"
