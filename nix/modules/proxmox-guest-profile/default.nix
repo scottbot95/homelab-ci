@@ -1,13 +1,11 @@
 { config, options, lib, pkgs, modulesPath, ... }:
 let
-  cfg = config.scott.proxmoxGuest;
   secretCommand = secret: 
     ''${pkgs.sops}/bin/sops --extract '["${secret}"]' -d ${../../../proxmox.json}'';
   isNixops = (builtins.hasAttr "deployment" options);
 in with lib; {
   imports = [
      "${modulesPath}/profiles/qemu-guest.nix"
-     ./sops.nix
   ];
 
   config = 
@@ -53,7 +51,7 @@ in with lib; {
 
           mkdir -p /mnt/boot
           mount /dev/disk/by-label/NIXBOOT /mnt/boot
-        '' + cfg.partition;
+        '';
       };
 
       boot.loader.systemd-boot.enable = true;
