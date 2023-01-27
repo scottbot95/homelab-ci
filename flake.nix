@@ -1,9 +1,11 @@
 {
   description = "Various tools and configs to assit deploying to my Proxmox Homelab";
 
+  inputs.nixpkgs.url = "github:NixOs/nixpkgs";
   inputs.nixos-generators.url = "github:nix-community/nixos-generators";
+  inputs.nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
 
-  outputs = { self, nixos-generators }: {
+  outputs = { self, nixos-generators, ... }: {
     nixosModules = {
       proxmox-guest-profile = import ./nix/modules/proxmox-guest-profile;
     };

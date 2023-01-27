@@ -18,7 +18,9 @@
     "nixos-generators": {
       "inputs": {
         "nixlib": "nixlib",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1674666581,
@@ -36,23 +38,23 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1674746945,
-        "narHash": "sha256-xJ5XrXWPHDArSAJtJVBGRQzHu3ESI13zMNjXbnRaAjY=",
-        "owner": "NixOS",
+        "lastModified": 1674845239,
+        "narHash": "sha256-rfsWM2bfz7vJu3jjbMicXpl5ORWwv761AugrHqT6rBM=",
+        "owner": "NixOs",
         "repo": "nixpkgs",
-        "rev": "e39a949aaa9e4fc652b1619b56e59584e1fc305b",
+        "rev": "8a828fcb3800c9169913b0e03daa2c0812c4e88f",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
+        "owner": "NixOs",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
     "root": {
       "inputs": {
-        "nixos-generators": "nixos-generators"
+        "nixos-generators": "nixos-generators",
+        "nixpkgs": "nixpkgs"
       }
     }
   },
