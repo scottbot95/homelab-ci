@@ -1,7 +1,9 @@
 {
   description = "Various tools and configs to assit deploying to my Proxmox Homelab";
 
-  outputs = { self }: {
+  inputs.nixos-generators.url = "github:nix-community/nixos-generators";
+
+  outputs = { self, nixos-generators }: {
     nixosModules = {
       proxmox-guest-profile = import ./nix/modules/proxmox-guest-profile;
     };
@@ -33,6 +35,12 @@
         };
         extraArgs = builtins.removeAttrs args [ "stateName" ];
       in nixpkgs.lib.recursiveUpdate sharedConfig extraArgs;
+    };
+
+    packages.x86_64-linux.proxmox-qemu-template = nixos-generators.nixosGenerate {
+      system = "x86_64-linux";
+      format = "proxmox";
+      modules = [ ./nix/proxmox-qemu-template.nix ];
     };
   };
 }
