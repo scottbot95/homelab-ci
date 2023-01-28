@@ -11,8 +11,6 @@
     boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
 
     services.qemuGuest.enable = true;
-    services.cloud-init.enable = true;
-    services.cloud-init.network.enable = true;
 
     services.openssh = {
       enable = true;

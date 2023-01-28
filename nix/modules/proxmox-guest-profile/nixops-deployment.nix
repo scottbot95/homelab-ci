@@ -48,11 +48,11 @@ in {
 
       fileSystems = {
         "/" = {
-          device = "/dev/sda2";
+          device = "/dev/sda1";
           fsType = "ext4";
         };
         "/boot" = {
-          device = "/dev/sda1";
+          device = "/dev/sda3";
           fsType = "vfat";
         };
       };
@@ -60,5 +60,5 @@ in {
         { device = "/dev/sda2"; }
       ];
     };
-  } else {};
+  } else { };
 }
