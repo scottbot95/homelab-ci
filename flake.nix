@@ -8,6 +8,7 @@
   outputs = { self, nixos-generators, ... }: {
     nixosModules = {
       proxmox-guest-profile = import ./nix/modules/proxmox-guest-profile;
+      sops = import ./nix/modules/sops;
     };
 
     lib = {
